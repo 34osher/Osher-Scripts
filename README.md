@@ -1,2 +1,1 @@
-# Eliran-Scripts
-My own collection of scripts 
+scripts for the fun
