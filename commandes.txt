@@ -1,0 +1,124 @@
+
+
+
+du -h --max-depth=1 /path/to/directory | sort -rh
+
+
+git remote set-url origin http://
+
+
+ps aux
+
+ls -lh
+sudo df -h
+
+du -hs
+du -h --max-depth=1 / | sort -rh
+du -h --max-depth=1 /tmp | sort -rh
+du -h --max-depth=1 /var/log | sort -rh
+
+systemctl list-units --type=service | grep 
+
+apt clean
+yum clean all
+dnf clean all
+
+_________________________________GitLab_________________________________________
+
+Cleaning unnecessary data
+gitlab-rake gitlab:cleanup:orphan_lfs_files DRY_RUN=false
+gitlab-rake gitlab:cleanup:orphan_job_artifact_files DRY_RUN=false
+
+_________________________________Git_________________________________________
+
+git log --oneline --all --graph
+
+Add remote
+git remote add origin http://3.121.223.42/InbarProjects/weatherapp.git
+
+Replace remote url
+git remote set-url origin http://3.121.223.42/InbarProjects/weatherapp.git	
+
+git remote -v
+
+for ssh github:
+git remote set-url origin git@github.com:snrow/Terraform-class-ex5.git
+
+ssh-keygen -t ed25519 -C [your github email]
+_________________________________Docker_________________________________________
+
+docker system prune
+
+Change to group (no sudo docker)
+newgrp docker
+
+List containers
+docker ps -a
+docker ps --no-trunc 
+
+List Images
+docker images
+
+docker rm my-container
+docker rmi my-image
+
+docker exec -it lb /bin/bash
+
+Remove unused resources
+docker system prune -a
+
+docker rm -f $(docker ps -aq)
+docker rmi -f $(docker images -aq)
+
+docker tag osher-flask_app 34osher/weather_app:latest
+docker push 34osher/weather_app:latest
+
+docker run --name oshertest -it -p 8000:8000 34osher/weather_gunicorn 
+_________________________________AWS_________________________________________
+
+ssh-add ~/.ssh/authorized_keys/MyInfinityKeyPair.pem
+ssh ec2-user@3.70.241.220
+
+Start
+aws ec2 --region eu-central-1 start-instances --instance-ids i-015e9d7a2d83e54ae
+
+Get Public IP
+aws ec2 describe-instances --instance-ids i-015e9d7a2d83e54ae \
+	--region eu-central-1 \
+    --query 'Reservations[*].Instances[*].PublicIpAddress' \
+    --output text
+
+Get Instances IDs
+aws ec2 --region eu-central-1 describe-instances --query Reservations[*].Instances[*].[InstanceId] | grep i | sed 's/"//g'
+
+
+Set Access Key to the aws cli
+aws configure
+cat ~/.aws/config
+cat ~/.aws/credentials
+
+
+_________________________________VMware_________________________________________
+ssh ubuntu-server@10.1.0.47
+scp -r /home/inbar/git/python/final_project/weather_app ubuntu-server@10.1.0.47:~/
+
+sudo systemctl status weather_app
+
+sudo nginx -t
+sudo systemctl restart nginx
+
+___________________________________My PC_______________________________________
+
+Removed unused dependencies apt packages
+sudo apt-get autoremove && sudo apt-get autoclean
+
+Remove disabled snap packages
+LANG=C snap list --all snap list --all | awk '/disabled/{print $1" --revision "$3}' | sudo xargs -rn3 snap remove
+
+
+sudo apt install gnome-tweaks
+sudo apt install gnome-shell-extensions
+sudo apt install gnome-shell-extension-manager
+
+
+sudo dpkg -i  ~/Downloads/discord-0.0.30.deb
