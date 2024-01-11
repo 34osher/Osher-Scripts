@@ -1,5 +1,7 @@
 #!/bin/bash
-
+echo "Code written by : Eliran Ben Maor"
+ehco "Last update: 04/09/2023"
+echo "Last time checked: 04/09/2023 by: Eliran"
 #To able to use it for everywhere just
 #sudo cp Add-SSH-Key.sh /usr/local/bin/awskey
 #sudo chmod +x /usr/local/bin/awskey
